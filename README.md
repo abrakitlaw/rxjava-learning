@@ -676,3 +676,19 @@ example:
         onNext: 36
         onNext: 45
         onNext: 55
+
+ ## Hot & Cold Observables
+ When does an Observable begin emitting its sequence of items? it depends on the Observable.
+ A Hot Observable may begin emitting items as soon as it is created, and so any observer who later subscribes to that
+ Observable may start observing the sequence somewhere in the middle.
+
+ A Cold Observable, on the other hand, waits until an observer subscribes to it before it begins to emit items,
+ and so such an observable to see the whole sequence from the beginning.
+ The code samples that we've seen in this guide so far have been cold observables, because cold observables are easier to reason about.
+ Every observable that is created with the Observable.create is a cold observable.
+ That includes all the shorthands that we've seen, such as just, range, timer and from.
+
+## Defer
+Defer do not create the Observable until the observer subscribes, and
+Defer create a fresh Observable for each observer.
+Defer as a tool for ensuring Observable code runs when subscribed (rather than when created).
